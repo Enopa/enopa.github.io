@@ -155,6 +155,7 @@ header h2, footer h2
 {
 	margin-top: 1em;
 	font-size: 1.3vw;
+	margin-bottom: 1em;
 }
 
 #AboutMe img
@@ -166,37 +167,22 @@ header h2, footer h2
 	z-index: -1;
 	margin-left: 20pt;
 	border: 5px solid #363636;
-	border-radius: 5pt;
 }
 
-#AboutMeTable
+#AboutMe ul
 {
-	font-size: 1vw;
-	margin-top: .5em;
-	display: inline-block;
-	position: relative;
-	bottom: 30pt;
-	z-index: -1;
-	
+	float: left;
+	margin-left:22pt;
+	font-size: 1.3vw;
 }
 
-#AboutMeTable h2
+#Projects
 {
-	text-align: center;
+	margin-top: 10%;
+	margin-bottom: 10%;
+	padding-top: 8vw;
+	font-size: 1.3vw;
 }
-
-#AboutMeTable table, #AboutMeTable  tr,#AboutMeTable  th,#AboutMeTable  td
-{
-	border: 2px solid black;
-}
-
-#AboutMeTable th
-{
-	background-color: #ff00a6; 
-	color: #363636;
-}
-
-
 
 /*Education section styling */
 #Education
@@ -297,7 +283,8 @@ header h2, footer h2
 	margin-top: 50%;
 	margin-bottom: 5%;
 	padding-top: 8vw;
-	padding-bottom: 250pt;
+	padding-bottom: 200pt;
+	
 }
 
 #Links p
@@ -309,16 +296,17 @@ header h2, footer h2
 {
 	float: right;
 	position: relative;
-	bottom: 15vw;
+	bottom: 10vw;
 	width: 30%;
 	text-align: center;
 	z-index: -1;
-	background-color: #ff00a6;
+	background-color: #363636;
 	padding: 1em;
-	border: 5pt #363636 solid;
-	border-radius: 5pt;
+	border: 5pt #ff00a6 solid;
 	padding-top: 20pt;
 	padding-bottom: 20pt;
+	color: #bcbcbc;
+	
 }
 
 /*This aside is featured within the Links section*/
@@ -339,31 +327,3 @@ aside h3
 	color: #ff00a6;
 }
 
-
-.BlogPost form
-{
-	background-color: #ff00a6;
-	display: block;
-	margin: auto;
-	margin-top: 1vw;
-	padding: 1em;
-	text-align: center;
-	border-top: 10pt #363636 solid;
-	border-bottom: 10pt #363636 solid;
-	width: 50em;
-}
-
-.BlogPost p
-{
-}
-
-.BlogPost label
-{
-	font-size: 20pt;
-}
-
-.BlogPost textarea
-{
-	height:150px;
-	width: 500px;
-}
