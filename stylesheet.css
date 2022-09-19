@@ -19,7 +19,7 @@ html
 
 body
 {
-	background-color: #d1d1d1;
+	background-color: #FFFFFF;
 }
 
 h1, h2
@@ -32,7 +32,7 @@ h1, h2
 header, footer
 {
 	background-color: #363636;
-	color: #ff00a6;
+	color: #D09191;
 	position: fixed;
 	text-align: center;
 	padding: 1em;
@@ -42,6 +42,7 @@ header
 {
 	float: top;
 	width: 100%;
+	z-index: 5;
 }
 
 header h1
@@ -52,13 +53,14 @@ header h1
 header a
 {
 	text-decoration: none;
-	color: #ff00a6;
+	color: #ffffff;
 }
 
 footer
 {
 	bottom: 0px;
 	width: 100%;
+	color: #ffffff;
 }
 
 footer li
@@ -73,7 +75,7 @@ footer li
 footer a
 {
 	text-decoration: none;
-	color: #ff00a6;
+	color: #D09191;
 	padding: 1em;
 }
 
@@ -110,6 +112,8 @@ header h2, footer h2
 }
 
 
+
+
 /*Start area styling */
 .Start h1
 {
@@ -118,30 +122,14 @@ header h2, footer h2
 	margin-top: 12%;
 }
 
-.Start a
-{
-	text-decoration: none;
-	font-weight: bold;
-	font-size: 3vw;
-	color: #363636;
-	background-color: #ff00a6;
-	display: block;
-	width: 15%;
-	margin-left: auto;
-	margin-right: auto;
-	text-align: center;
-	margin-top: 20pt;
-	padding: 10pt;
-	border-radius: 5pt;
-}
-
-.Start a:hover
-{
-	background-color: #ff38b9;
-}
 
 
 /*About Me section styling */
+
+#AboutMe h1
+{
+	color: #882232;
+}
 
 #AboutMe
 {
@@ -150,9 +138,9 @@ header h2, footer h2
 	padding-top: 8vw;
 }
 
-
 #AboutMe p 
 {
+	color: #444444;
 	margin-top: 1em;
 	font-size: 1.3vw;
 	margin-bottom: 1em;
@@ -166,7 +154,6 @@ header h2, footer h2
 	bottom: 40pt;
 	z-index: -1;
 	margin-left: 20pt;
-	border: 5px solid #363636;
 }
 
 #AboutMe ul
@@ -182,6 +169,35 @@ header h2, footer h2
 	margin-bottom: 10%;
 	padding-top: 8vw;
 	font-size: 1.3vw;
+	z-index: -1;
+}
+
+#Projects li
+{
+	margin-top: 15pt;
+	list-style-type: none;
+	position: relative;
+	display: inline-block;
+	padding-right: 2em;
+	font-weight: bold;
+}
+
+#Projects h1 {
+	color: #882232;
+}
+
+#Projects button:hover {
+	background-color: #e4c5c5;
+}
+
+#Proj {
+	background-color: #D09191;
+	word-wrap: break-word;
+	width: 19em;
+	padding: 15pt;
+	font-size: 1.1em;
+	height: 15em;
+	
 }
 
 /*Education section styling */
@@ -190,6 +206,10 @@ header h2, footer h2
 	margin-top: 10%;
 	margin-bottom: 10%;
 	padding-top: 8vw;
+}
+
+#Education h1 {
+	color: #882232;
 }
 
 #Education table
@@ -209,7 +229,7 @@ header h2, footer h2
 #Education th
 {
 	padding: 5pt;
-	background-color: #ff00a6;
+	background-color: #D09191;
 	border: 2px black solid;
 	font-size: 1.5vw;
 }
@@ -236,6 +256,10 @@ header h2, footer h2
 	padding-top: 8vw;
 }
 
+#Experience h1 {
+	color: #882232;
+}
+
 #Experience p, #Experience ul
 {
 	font-size: 1.2vw;
@@ -249,30 +273,23 @@ header h2, footer h2
 
 #Experience ul strong
 {
-	color: #ff00a6;
+	color: #D09191;
 }
 
 #Experience figure
 {
 	float: right;
 	position: relative;
-	bottom: 14em;
-	background-color:#ff38b9;
-	border: 5pt solid #363636;
+	bottom: 20em;
 	z-index: -5;
 }
 
 #Experience img
 {
-	height: 10em;
+	height: 15em;
 
 }
 
-#Experience figcaption
-{
-	text-align: center;
-	font-weight: bold;
-}
 
 
 
@@ -285,6 +302,10 @@ header h2, footer h2
 	padding-top: 8vw;
 	padding-bottom: 200pt;
 	
+}
+
+#Links h1 {
+	color: #882232;
 }
 
 #Links p
@@ -300,12 +321,11 @@ header h2, footer h2
 	width: 30%;
 	text-align: center;
 	z-index: -1;
-	background-color: #363636;
+	background-color: #D09191;
 	padding: 1em;
-	border: 5pt #ff00a6 solid;
 	padding-top: 20pt;
 	padding-bottom: 20pt;
-	color: #bcbcbc;
+	color: #444444;
 	
 }
 
@@ -324,6 +344,6 @@ aside h3
 
 #Links a
 {
-	color: #ff00a6;
+	color: #D09191;
 }
 
