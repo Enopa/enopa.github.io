@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
+import { hover } from '@testing-library/user-event/dist/hover';
 
 /* Size, Labels and Colours of the Buttons */
 const pieData = [
@@ -17,11 +18,11 @@ function getCoordinatesForPercent(percent) {
   return [x, y];
 }
 
-function PieChart({ data, onSegmentClick }) {
+function PieChart({ data, activeSlice, hoverSlice, onSegmentClick, onSegmentHover, onSegmentLeave }) {
   let cumulativePercent = 0;
 
   return (
-    <svg viewBox="-1 -1 2 2" style={{ 
+    <svg viewBox="-1 -1 2 2" style={{
       transform: 'rotate(80deg)',
       width: '200vw',
       height: '200vw',
@@ -46,14 +47,22 @@ function PieChart({ data, onSegmentClick }) {
           `L 0 0`,
         ].join(' ');
 
+        const isActive = activeSlice === slice.label;
+        const isHovered = hoverSlice === slice.label;
+
+        const fillColor = isHovered ? "grey" : isActive ? 'blue' : slice.color;
+
         return (
           <path
             key={index}
+            className="segment"
             d={pathData}
-            fill={slice.color}
+            fill={fillColor}
             stroke="white"
             strokeWidth="0.01"
             onClick={() => onSegmentClick(slice.label)}
+            onMouseEnter={() => onSegmentHover(slice.label)}
+            onMouseLeave={() => onSegmentLeave()}
             style={{ cursor: 'pointer' }}
           />
         );
@@ -63,6 +72,8 @@ function PieChart({ data, onSegmentClick }) {
 }
 
 function App() {
+  const [activeSlice, setActiveSlide] = useState(null);
+
   const [baseColor, setBaseColor] = useState('grey');
   const [hoverColor, setHoverColor] = useState('');
 
@@ -75,7 +86,16 @@ function App() {
       <div className="circle" style={{ backgroundColor: currentColor }}>
         <span className="circle-text">Welcome to Jamal's Portfolio</span>
       </div>
-      <PieChart className="buttons" data={pieData} onSegmentClick={() => setBaseColor("blue")} />
+      <PieChart 
+        data={pieData} 
+        activeSlice={activeSlice}
+        hoverSlice={hoverColor} 
+        onSegmentClick={(label) => setActiveSlide(label)}
+        onSegmentHover={(label) => setHoverColor(label)}
+        onSegmentLeave={() => setHoverColor(null)}
+      />
+
+
     </div>
   );
 }

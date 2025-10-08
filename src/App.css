@@ -27,3 +27,13 @@
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
   z-index: 2;
 }
+
+
+.segment {
+  transition: transform 0.3s ease;
+  transform-origin: top;
+}
+
+.segment:hover {
+  transform: scale(1.01);
+}
