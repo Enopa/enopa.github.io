@@ -1,3 +1,8 @@
+body, html {
+  overflow: hidden;
+  height: 100%
+}
+
 .container {
   display: flex;
   justify-content: center;
@@ -23,17 +28,27 @@
   color: white;
   font-size: 1.5rem;
   text-align: center;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.4s ease;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
   z-index: 2;
+  font-size: 3.5em;
 }
 
 
 .segment {
-  transition: transform 0.3s ease;
+  transition: transform 0.4s ease;
   transform-origin: top;
 }
 
 .segment:hover {
   transform: scale(1.01);
+}
+
+.info{
+  position: absolute;
+  size: 100%;
+  top: 50%;
+  right: 15%;
+  z-index: 0;
+  color: black
 }

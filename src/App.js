@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import './App.css';
-import { hover } from '@testing-library/user-event/dist/hover';
 
 /* Size, Labels and Colours of the Buttons */
 const pieData = [
-  { label: 'About', value: 14, color: 'black' },
-  { label: 'Work', value: 14, color: 'black' },
-  { label: 'Skills', value: 14, color: 'black' },
-  { label: 'Contact', value: 14, color: 'black' },
+  { label: 'Contact', value: 14, color: '#65881A'},
+  { label: 'Work', value: 14, color: '#D24C28'},
+  { label: 'Skills', value: 14, color: '#C5CF5E'},
+  { label: 'About', value: 14, color: '#E78E17'},
 ];
 
 
@@ -50,7 +49,7 @@ function PieChart({ data, activeSlice, hoverSlice, onSegmentClick, onSegmentHove
         const isActive = activeSlice === slice.label;
         const isHovered = hoverSlice === slice.label;
 
-        const fillColor = isHovered ? "grey" : isActive ? 'blue' : slice.color;
+        const fillColor = isHovered ? "grey" : isActive ? slice.color : "black";
 
         return (
           <path
@@ -60,7 +59,7 @@ function PieChart({ data, activeSlice, hoverSlice, onSegmentClick, onSegmentHove
             fill={fillColor}
             stroke="white"
             strokeWidth="0.01"
-            onClick={() => onSegmentClick(slice.label)}
+            onClick={() => onSegmentClick(slice.label, slice.color)}
             onMouseEnter={() => onSegmentHover(slice.label)}
             onMouseLeave={() => onSegmentLeave()}
             style={{ cursor: 'pointer' }}
@@ -72,30 +71,31 @@ function PieChart({ data, activeSlice, hoverSlice, onSegmentClick, onSegmentHove
 }
 
 function App() {
-  const [activeSlice, setActiveSlide] = useState(null);
+  const [activeSlice, setActiveSlice] = useState("Welcome to Jamal's Portfolio");
 
   const [baseColor, setBaseColor] = useState('grey');
   const [hoverColor, setHoverColor] = useState('');
 
-  const currentColor = hoverColor || baseColor;
-  const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink', 'teal'];
-  const angleStep = 270 / colors.length;
 
   return (
     <div className="container">
-      <div className="circle" style={{ backgroundColor: currentColor }}>
-        <span className="circle-text">Welcome to Jamal's Portfolio</span>
+      <div className="circle" style={{ backgroundColor: baseColor }}>
+        <span className="circle-text">{activeSlice}</span>
       </div>
       <PieChart 
         data={pieData} 
         activeSlice={activeSlice}
         hoverSlice={hoverColor} 
-        onSegmentClick={(label) => setActiveSlide(label)}
+        onSegmentClick={(label, color) => {
+          setActiveSlice(label);
+          setBaseColor(color);
+        }}
         onSegmentHover={(label) => setHoverColor(label)}
         onSegmentLeave={() => setHoverColor(null)}
       />
-
-
+      <div className="info">
+        <h1>{activeSlice}</h1>
+      </div>
     </div>
   );
 }
