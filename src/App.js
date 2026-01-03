@@ -76,6 +76,25 @@ function App() {
   const [baseColor, setBaseColor] = useState('grey');
   const [hoverColor, setHoverColor] = useState('');
 
+  var info = About();
+
+  switch (activeSlice) {
+    case "About":
+      info = About();
+      break;
+    case "Skills":
+      info = Skills();
+      break;
+    case "Work":
+      info = Work();
+      break;
+    case "Contact":
+      info = Contact();
+      break;
+    default: 
+      info = Welcome();
+  }
+
 
   return (
     <div className="container">
@@ -94,10 +113,52 @@ function App() {
         onSegmentLeave={() => setHoverColor(null)}
       />
       <div className="info">
-        <h1>{activeSlice}</h1>
+        {info}
       </div>
     </div>
   );
+}
+
+function Welcome() {
+  return (
+    <></>
+  )
+}
+
+function About() {
+  return (
+    <div className="About">
+      <h1>About Me</h1>
+      <p>My name is Jamal Haruna, I'm 23 years old and live in London. I'm bisexual and he/they</p>
+    </div>
+  )
+}
+
+function Skills() {
+  return (
+    <div>
+      <h1>Skills</h1>
+      <p>I'm diamond rank in Street Fighter 6 </p>
+    </div>
+  )
+}
+
+function Work() {
+  return (
+    <div>
+      <h1>Work</h1>
+      <p>I am currently a Business Process Automation Developer at Fitch Ratings.</p>
+    </div>
+  )
+}
+
+function Contact() {
+  return (
+    <div>
+      <h1>Contact</h1>
+      <p>Reach me on 03harunaj@gmail.com</p>
+    </div>
+  )
 }
 
 export default App;
