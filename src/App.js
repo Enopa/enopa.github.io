@@ -2,11 +2,16 @@ import React, { useState } from 'react';
 import './App.css';
 
 /* Size, Labels and Colours of the Buttons */
+const section1 = "ABOUT"
+const section2 = "EXPERIENCE"
+const section3 = "PROJECTS"
+const section4 = "CONTACT"
+
 const pieData = [
-  { label: 'Contact', value: 14, color: '#65881A'},
-  { label: 'Work', value: 14, color: '#D24C28'},
-  { label: 'Skills', value: 14, color: '#C5CF5E'},
-  { label: 'About', value: 14, color: '#E78E17'},
+  { label: section4, value: 14, color: '#65881A', image: 'image.png'},
+  { label: section3, value: 14, color: '#D24C28', image: 'logo192.png'},
+  { label: section2, value: 14, color: '#C5CF5E', image: 'logo192.png'},
+  { label: section1, value: 14, color: '#E78E17', image: 'image.png'},
 ];
 
 
@@ -46,24 +51,27 @@ function PieChart({ data, activeSlice, hoverSlice, onSegmentClick, onSegmentHove
           `L 0 0`,
         ].join(' ');
 
+
         const isActive = activeSlice === slice.label;
         const isHovered = hoverSlice === slice.label;
 
         const fillColor = isHovered ? "grey" : isActive ? slice.color : "black";
 
         return (
-          <path
-            key={index}
-            className="segment"
-            d={pathData}
-            fill={fillColor}
-            stroke="white"
-            strokeWidth="0.01"
-            onClick={() => onSegmentClick(slice.label, slice.color)}
-            onMouseEnter={() => onSegmentHover(slice.label)}
-            onMouseLeave={() => onSegmentLeave()}
-            style={{ cursor: 'pointer' }}
-          />
+          <g key={index}>
+            <path
+              key={index}
+              className="segment"
+              d={pathData}
+              fill={fillColor}
+              stroke="#616161"
+              strokeWidth="0.01"
+              onClick={() => onSegmentClick(slice.label, slice.color)}
+              onMouseEnter={() => onSegmentHover(slice.label)}
+              onMouseLeave={() => onSegmentLeave()}
+              style={{ cursor: 'pointer' }}
+            />
+          </g>
         );
       })}
     </svg>
@@ -79,16 +87,16 @@ function App() {
   var info = About();
 
   switch (activeSlice) {
-    case "About":
+    case section1:
       info = About();
       break;
-    case "Skills":
-      info = Skills();
+    case section2:
+      info = Experience();
       break;
-    case "Work":
-      info = Work();
+    case section3:
+      info = Projects();
       break;
-    case "Contact":
+    case section4:
       info = Contact();
       break;
     default: 
@@ -129,25 +137,25 @@ function About() {
   return (
     <div className="About">
       <h1>About Me</h1>
-      <p>My name is Jamal Haruna, I'm 23 years old and live in London. I'm bisexual and he/they</p>
+      <p>[ABOUT ME]</p>
     </div>
   )
 }
 
-function Skills() {
+function Experience() {
   return (
     <div>
-      <h1>Skills</h1>
-      <p>I'm diamond rank in Street Fighter 6 </p>
+      <h1>EXPERIENCE</h1>
+      <p>[SKILLS SECTIONS]</p>
     </div>
   )
 }
 
-function Work() {
+function Projects() {
   return (
     <div>
-      <h1>Work</h1>
-      <p>I am currently a Business Process Automation Developer at Fitch Ratings.</p>
+      <h1>PROJECTS</h1>
+      <p>[PROJECTS]</p>
     </div>
   )
 }
@@ -155,8 +163,8 @@ function Work() {
 function Contact() {
   return (
     <div>
-      <h1>Contact</h1>
-      <p>Reach me on 03harunaj@gmail.com</p>
+      <h1>CONTACT</h1>
+      <p>[CONTACTS]</p>
     </div>
   )
 }
