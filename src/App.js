@@ -79,9 +79,9 @@ function PieChart({ data, activeSlice, hoverSlice, onSegmentClick, onSegmentHove
 }
 
 function App() {
-  const [activeSlice, setActiveSlice] = useState("Welcome to Jamal's Portfolio");
+  const [activeSlice, setActiveSlice] = useState("WELCOME");
 
-  const [baseColor, setBaseColor] = useState('grey');
+  const [baseColor, setBaseColor] = useState('#b95a00');
   const [hoverColor, setHoverColor] = useState('');
 
   var info = About();
@@ -148,7 +148,7 @@ function Experience() {
       <h1>EXPERIENCE</h1>
       <p>[SKILLS SECTIONS]</p>
     </div>
-  )
+  );
 }
 
 function Projects() {
@@ -157,14 +157,16 @@ function Projects() {
       <h1>PROJECTS</h1>
       <p>[PROJECTS]</p>
     </div>
-  )
+  );
 }
 
 function Contact() {
   return (
     <div>
       <h1>CONTACT</h1>
-      <p>[CONTACTS]</p>
+      <p>For any burning questions or just a friendly chat, please use the details below to get in touch!</p>
+      <p>Email: <a href="mailto:03harunaj@gmail.com">03harunaj@gmail.com</a></p>
+      <p>Linkedin:&nbsp;<a href="https://www.linkedin.com/in/jamal-haruna-73007b214/">https://www.linkedin.com/in/jamal-haruna-73007b214/</a></p>
     </div>
   )
 }

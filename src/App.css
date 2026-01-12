@@ -46,14 +46,26 @@ body, html {
 
 .info{
   position: absolute;
-  text-align: center;
+  text-align: left;
   flex: none;
   width: 25%;
   size: 100%;
-  top: 50%;
   right: 5%;
   z-index: 0;
   color: white;
   text-wrap: wrap;
   padding: 0.5%;
+  font-size: larger;
+}
+
+a:link {
+  color: lightgoldenrodyellow;
+}
+
+a:visited {
+  color: lightgoldenrodyellow;
+}
+
+a:hover {
+  color: rgb(248, 156, 81);
 }

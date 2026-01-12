@@ -7,6 +7,8 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <title>Jamal's Portfolio</title>
+    <link rel="icon" href="logo.png" sizes='large'/>
     <App />
   </React.StrictMode>
 );
