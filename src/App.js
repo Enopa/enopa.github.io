@@ -8,10 +8,10 @@ const section3 = "PROJECTS"
 const section4 = "CONTACT"
 
 const pieData = [
-  { label: section4, value: 14, color: '#65881A', image: 'image.png'},
-  { label: section3, value: 14, color: '#D24C28', image: 'logo192.png'},
-  { label: section2, value: 14, color: '#C5CF5E', image: 'logo192.png'},
-  { label: section1, value: 14, color: '#E78E17', image: 'image.png'},
+  { label: section4, value: 14, color: '#65881A', image: 'image.png' },
+  { label: section3, value: 14, color: '#D24C28', image: 'munchlax.png' },
+  { label: section2, value: 14, color: '#C5CF5E', image: 'image.png' },
+  { label: section1, value: 14, color: '#E78E17', image: 'logo.png' },
 ];
 
 
@@ -43,6 +43,8 @@ function PieChart({ data, activeSlice, hoverSlice, onSegmentClick, onSegmentHove
         cumulativePercent += slice.value / 100;
         const [endX, endY] = getCoordinatesForPercent(cumulativePercent);
 
+        
+
         const largeArcFlag = slice.value / 100 > 0.5 ? 1 : 0;
 
         const pathData = [
@@ -64,9 +66,9 @@ function PieChart({ data, activeSlice, hoverSlice, onSegmentClick, onSegmentHove
               className="segment"
               d={pathData}
               fill={fillColor}
-              stroke="#616161"
-              strokeWidth="0.01"
-              onClick={() => onSegmentClick(slice.label, slice.color)}
+              stroke="#ffffff"
+              strokeWidth="0.001"
+              onClick={() => onSegmentClick(slice.label, slice.color, slice.image)}
               onMouseEnter={() => onSegmentHover(slice.label)}
               onMouseLeave={() => onSegmentLeave()}
               style={{ cursor: 'pointer' }}
@@ -80,9 +82,12 @@ function PieChart({ data, activeSlice, hoverSlice, onSegmentClick, onSegmentHove
 
 function App() {
   const [activeSlice, setActiveSlice] = useState("WELCOME");
-
   const [baseColor, setBaseColor] = useState('#b95a00');
   const [hoverColor, setHoverColor] = useState('');
+
+  const [bgToggle, setBG] = useState(true);
+  const [firstImage, setFirstImage] = useState({});
+  const [secondImage, setSecondImage] = useState({});
 
   var info = About();
 
@@ -99,29 +104,36 @@ function App() {
     case section4:
       info = Contact();
       break;
-    default: 
+    default:
       info = Welcome();
   }
 
 
   return (
-    <div className="container">
-      <div className="circle" style={{ backgroundColor: baseColor }}>
-        <span className="circle-text">{activeSlice}</span>
-      </div>
-      <PieChart 
-        data={pieData} 
-        activeSlice={activeSlice}
-        hoverSlice={hoverColor} 
-        onSegmentClick={(label, color) => {
-          setActiveSlice(label);
-          setBaseColor(color);
-        }}
-        onSegmentHover={(label) => setHoverColor(label)}
-        onSegmentLeave={() => setHoverColor(null)}
-      />
-      <div className="info">
-        {info}
+    <div>
+      <div className={`bg-layer ${bgToggle ? "active" : ""}`} style={firstImage} />
+      <div className={`bg-layer ${!bgToggle ? "active" : ""}`} style={secondImage} />
+      <div className="container">
+
+        <div className="circle" style={{ backgroundColor: baseColor }}>
+          <span className="circle-text">{activeSlice}</span>
+        </div>
+        <PieChart
+          data={pieData}
+          activeSlice={activeSlice}
+          hoverSlice={hoverColor}
+          onSegmentClick={(label, color, image) => {
+            setActiveSlice(label);
+            setBaseColor(color);
+            setBG(!bgToggle);
+            bgToggle ? setSecondImage({ backgroundImage: `url(${image})` }): setFirstImage({ backgroundImage: `url(${image})` });
+          }}
+          onSegmentHover={(label) => setHoverColor(label)}
+          onSegmentLeave={() => setHoverColor(null)}
+        />
+        <div className="info">
+          {info}
+        </div>
       </div>
     </div>
   );
