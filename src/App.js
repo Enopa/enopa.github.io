@@ -22,6 +22,15 @@ function getCoordinatesForPercent(percent) {
   return [x, y];
 }
 
+function getTextCoordinatesForPercent(percent, radius) {
+  const angle = 2 * Math.PI * percent;
+  return [
+    Math.cos(angle) * radius,
+    Math.sin(angle) * radius,
+  ];
+}
+
+
 function PieChart({ data, activeSlice, hoverSlice, onSegmentClick, onSegmentHover, onSegmentLeave }) {
   let cumulativePercent = 0;
 
@@ -39,11 +48,25 @@ function PieChart({ data, activeSlice, hoverSlice, onSegmentClick, onSegmentHove
       zIndex: 0,
     }}>
       {data.map((slice, index) => {
+
+        const startPercent = cumulativePercent
+
         const [startX, startY] = getCoordinatesForPercent(cumulativePercent);
         cumulativePercent += slice.value / 100;
+
+        const endPercent = cumulativePercent
         const [endX, endY] = getCoordinatesForPercent(cumulativePercent);
 
-        
+        const midPercent = (startPercent + endPercent) / 2;
+        const midAngle = (midPercent * 360) + 180;
+
+        const vw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+        const scaleFactor = Math.min(1, 1200 / vw); // clamp growth
+
+        const BASE_TEXT_RADIUS = 0.3;
+        const textRadius = BASE_TEXT_RADIUS * scaleFactor;
+
+        const [textX, textY] = getTextCoordinatesForPercent(midPercent, textRadius);
 
         const largeArcFlag = slice.value / 100 > 0.5 ? 1 : 0;
 
@@ -73,6 +96,18 @@ function PieChart({ data, activeSlice, hoverSlice, onSegmentClick, onSegmentHove
               onMouseLeave={() => onSegmentLeave()}
               style={{ cursor: 'pointer' }}
             />
+
+            <text
+              x={textX}
+              y={textY}
+              textAnchor="middle"
+              dominantBaseline="middle"
+              fill="white"
+              fontSize="0.02"
+              pointerEvents="none"
+              transform={`rotate(${midAngle} ${textX} ${textY})`}
+              style={{ userSelect: 'none' }}
+            >{slice.label}</text>
           </g>
         );
       })}
@@ -116,7 +151,7 @@ function App() {
       <div className="container">
 
         <div className="circle" style={{ backgroundColor: baseColor }}>
-          <span className="circle-text">{activeSlice}</span>
+          <span className="circle-text" pointerEvents="none" style={{ userSelect: 'none' }}>{activeSlice.charAt(0)}</span>
         </div>
         <PieChart
           data={pieData}
@@ -126,12 +161,12 @@ function App() {
             setActiveSlice(label);
             setBaseColor(color);
             setBG(!bgToggle);
-            bgToggle ? setSecondImage({ backgroundImage: `url(${image})` }): setFirstImage({ backgroundImage: `url(${image})` });
+            bgToggle ? setSecondImage({ backgroundImage: `url(${image})` }) : setFirstImage({ backgroundImage: `url(${image})` });
           }}
           onSegmentHover={(label) => setHoverColor(label)}
           onSegmentLeave={() => setHoverColor(null)}
         />
-        <div className="info">
+        <div className="info" pointerEvents="none" style={{ userSelect: 'none' }}>
           {info}
         </div>
       </div>

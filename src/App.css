@@ -58,7 +58,7 @@ body, html {
 }
 
 .segment:hover {
-  transform: scale(1.01);
+  transform: scale(1.00001);
 }
 
 .info{
