@@ -3,6 +3,10 @@ body, html {
   height: 100%
 }
 
+p { 
+  font-weight: 200;
+}
+
 .bg-layer { 
   position: absolute;
   inset: 0;
@@ -86,6 +90,109 @@ a:visited {
 a:hover {
   color: rgb(248, 156, 81);
 }
+
+.highlight {
+  color: #ff9736;
+  font-weight: 700;
+}
+
+.timeline {
+  position: relative;
+  margin-left: 1.5rem;
+  padding-left: 2rem;
+  border-left: 2px solid #e0e0e0;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 3rem;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-marker {
+  position: absolute;
+  left: -2.6rem;
+  top: 0.4rem;
+  width: 12px;
+  height: 12px;
+  background-color: #fff;
+  border: 2px solid #555;
+  border-radius: 50%;
+}
+
+.timeline-marker:hover {
+  transform: scale(1.5);
+}
+
+.timeline-content h3 {
+  margin: 0.25rem 0 0.5rem;
+}
+
+.timeline-date {
+  font-size: 0.85rem;
+  display: inline-block;
+  margin-bottom: 0.25rem;
+}
+
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+}
+
+.contact-list li {
+  margin-bottom: 0.5rem;
+}
+
+.contact-list a {
+  text-decoration: none;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.project-card {
+  padding: 1.5rem;
+  border-radius: 12px;
+  background: #3b3b3bc5;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.project-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+.project-card .tech {
+  font-size: 0.85rem;
+  color: #9b9b9b;
+  margin-top: 0.75rem;
+}
+
+.project-card a {
+  display: inline-block;
+  margin-top: 1rem;
+  text-decoration: none;
+}
+
+.highlight {
+  font-weight: 500;
+}
+
+
+
 
 
 
