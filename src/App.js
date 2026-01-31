@@ -15,7 +15,7 @@ const pieData = [
 ];
 
 
-/* Gets the cooredinates for the percentage of the button on pie chart */
+/* Gets the coordinates for the percentage of the button on pie chart */
 function getCoordinatesForPercent(percent) {
   const x = Math.cos(2 * Math.PI * percent);
   const y = Math.sin(2 * Math.PI * percent);
@@ -30,6 +30,8 @@ function getTextCoordinatesForPercent(percent, radius) {
   ];
 }
 
+
+/* Generates the Pie Chart for the bulk of the website, max and minimum percentages adjusted so it only takes up half-ish of the page */
 
 function PieChart({ data, activeSlice, hoverSlice, onSegmentClick, onSegmentHover, onSegmentLeave }) {
   let cumulativePercent = 0;
@@ -75,7 +77,6 @@ function PieChart({ data, activeSlice, hoverSlice, onSegmentClick, onSegmentHove
           `A 1 1 0 ${largeArcFlag} 1 ${endX} ${endY}`,
           `L 0 0`,
         ].join(' ');
-
 
         const isActive = activeSlice === slice.label;
         const isHovered = hoverSlice === slice.label;
@@ -133,7 +134,8 @@ function App() {
   }
 
   const imageDictionary = {
-    "ABOUT": "about.png",
+    "WELCOME": "munchlax.png",
+    "ABOUT": "about.PNG", //idk why but the file was saved with caps on the png so leaving it as this for now
     "EXPERIENCE": "experience.png",
     "PROJECTS": "projects.png",
     "CONTACT": "contact.png",
@@ -147,7 +149,7 @@ function App() {
       <div className="container">
 
         <div className="circle" style={{ backgroundColor: baseColor }}>
-          <img src={imageDictionary[activeSlice]} height="150" alt="Symbol of Section" />
+          <img src={imageDictionary[activeSlice]} height="150" alt="" />
         </div>
         <PieChart
           data={pieData}
@@ -170,9 +172,22 @@ function App() {
   );
 }
 
+/* Functions that define the content on the website, labelled by section */
+
 function Welcome() {
   return (
-    <></>
+    <div id="welcome">
+      <h1>Welcome to Jamal’s Portfolio</h1>
+
+      <p>
+        This space showcases my skills, experience and delves into some details about who I am. Enjoy your stay!
+      </p>
+
+      <p>
+        Use the buttons on the left to explore each section
+      </p>
+    </div>
+
   )
 }
 
