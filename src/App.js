@@ -62,10 +62,10 @@ function PieChart({ data, activeSlice, hoverSlice, onSegmentClick, onSegmentHove
         const midPercent = (startPercent + endPercent) / 2;
         const midAngle = (midPercent * 360) + 180;
 
-        const vw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+        const vw = Math.max(document.documentElement.clientHeight, window.innerWidth || 0);
         const scaleFactor = Math.min(1, 1200 / vw); // clamp growth
 
-        const BASE_TEXT_RADIUS = 0.3;
+        const BASE_TEXT_RADIUS = 0.18;
         const textRadius = BASE_TEXT_RADIUS * scaleFactor;
 
         const [textX, textY] = getTextCoordinatesForPercent(midPercent, textRadius);
@@ -148,8 +148,8 @@ function App() {
       <div className={`bg-layer ${!bgToggle ? "active" : ""}`} style={secondImage} />
       <div className="container">
 
-        <div className="circle" style={{ backgroundColor: baseColor }}>
-          <img src={imageDictionary[activeSlice]} height="150" alt="" />
+        <div className="circle" style={{ backgroundColor: baseColor, userSelect: 'none' }} pointerEvents="none">
+          <img className="circleImage" src={imageDictionary[activeSlice]} alt=""  pointerEvents="none"  style={{userSelect: 'none'}} />
         </div>
         <PieChart
           data={pieData}

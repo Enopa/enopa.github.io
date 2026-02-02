@@ -37,8 +37,8 @@ p {
   position: absolute;
   top: auto;
   left: auto;
-  width: 35vh;
-  height: 35vh;
+  width: 40vh;
+  height: 40vh;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -50,6 +50,10 @@ p {
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
   z-index: 2;
   font-size: 3.5em;
+}
+
+.circleImage {
+  height: 20vh;
 }
 
 
@@ -73,7 +77,7 @@ p {
   color: white;
   text-wrap: wrap;
   padding: 0.5%;
-  font-size: 1.5vh;
+
 }
 
 a:link {
